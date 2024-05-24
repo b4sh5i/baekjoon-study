@@ -1,5 +1,7 @@
 #include <iostream>
 #include <queue>
+#include <vector>
+#include <tuple>
 
 using namespace std;
 
@@ -31,11 +33,11 @@ int bfs() {
                 int nx = x + dx[i] * k;
                 int ny = y + dy[i] * k;
 
-                if (nx < 0 || ny < 0 || nx >= N || ny >= M || T[nx][ny] == '#') {
+                if (nx < 0 || ny < 0 || nx >= N || ny >= M || T[nx][ny] == '#' || V[nx][ny] < V[x][y] + 1) {
                     break;
                 }
 
-                if (V[nx][ny] > V[x][y] + 1) {
+                if (V[nx][ny] == INF) {
                     Q.push({nx, ny});
                     V[nx][ny] = V[x][y] + 1;
                 }
